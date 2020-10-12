@@ -12,3 +12,15 @@
   .margin {
       margin-bottom: 150px;
   }
+
+  .inputB {
+      background-color: #72846f;
+  }
+ 
+  .container {
+      margin-top: 45px;
+  }
+
+  .input {
+      width: 40%;
+  }
