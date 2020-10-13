@@ -24,3 +24,15 @@
   .input {
       width: 40%;
   }
+
+  .hero {
+      background-color: #e5e4d3;
+      height: 170px;
+      text-align: center;
+  }
+  .imgSize {
+      background-color: #72846F;
+      width: 350px;
+      height: 300px;
+      float: right;
+  }

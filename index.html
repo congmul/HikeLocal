@@ -10,6 +10,22 @@
 </head>
 <body>
 
+  <section class="hero">
+    <div class="hero-body">
+       
+      <div class="container">
+        
+  </article>
+        <h1 class="title">
+          Hike Local
+        </h1>
+        <h2 class="subtitle">
+          Hero subtitle
+        </h2>        
+      </div>
+    </div>
+  </section>
+
     <div class="container">
      
         <div class="tile is-ancestor">
@@ -22,19 +38,25 @@
             <!-- Top tile -->
           </div>
           <div class="tile box">
-           
-            <!-- Bottom tile -->
+            <article class="tile is-child is-info">
+              <figure class="image is-2by1">
+                  <img src="image.png" alt="logo">
+              </figure>
+          </article>   
+           <!-- Bottom tile -->
           </div>
         </div>
         <div class="tile box">  
-            <article class="tile is-child is-info">
-                <figure class="image is-2by1">
-                    <img src="image.png">
-                </figure>
-            </article>          
+          <article class="tile is-child is-info">
+            <figure class="image is-2by1">
+             <a href="#"><img src="google-maps-1797882_960_720.png"></a>
+            </figure>
+        </article>                   
           <!-- This tile will take up the whole vertical space -->
         </div>        
       </div>
+      
+
       <div class="tile is-parent">
         <article class="tile is-child notification inputB">
           <p class="title">Get Started!</p>
@@ -50,14 +72,31 @@
               </p>
               
               </div> 
+
               <div class="control">
                 <p class="control has-icons-left">
                 <input class="input is-hovered input" type="text" placeholder="Trail Rating?">
                 <span class="icon is-large is-left">
                   <i class="fas fa-air-freshener"></i>
-                </span>
-               
+                </span>               
               </p>
+
+              <div class="control">
+                <p class="control has-icons-left">
+                <input class="input is-hovered input" type="text" placeholder="Difficulty">
+                <span class="icon is-large is-left">
+                  <i class="fas fa-air-freshener"></i>
+                </span>               
+              </p>
+
+              <div class="control">
+                <p class="control has-icons-left">
+                <input class="input is-hovered input" type="text" placeholder="Mile Range">
+                <span class="icon is-large is-left">
+                  <i class="fas fa-air-freshener"></i>
+                </span>               
+              </p>
+
               <button class="button">
                 <span class="icon">
                   <i class="fas fa-hiking"></i>
@@ -68,10 +107,17 @@
           
           </div>
         </article>
-      </div>
-    
-    
+      </div>    
+        
     </div>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          By Students @ UW Bootcamp
+        </p>
+      </div>
+    </footer>
 
     <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
