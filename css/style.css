@@ -1,3 +1,7 @@
+body {
+    font-family: 'Playfair Display', serif;
+}
+
 .logo {
     height: 34%;
     width: 32%;
@@ -14,7 +18,7 @@
   }
 
   .inputB {
-      background-color: #72846f;
+      background-color: #9cc494;
   }
  
   .container {
@@ -26,7 +30,7 @@
   }
 
   .hero {
-      background-color: #e5e4d3;
+      background-color: #ffffff;
       height: 170px;
       text-align: center;
   }
@@ -35,4 +39,8 @@
       width: 350px;
       height: 300px;
       float: right;
+  }
+
+  .navbar {
+    background-color: #9cc494;
   }
