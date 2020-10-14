@@ -44,3 +44,7 @@ body {
   .navbar {
     background-color: #9cc494;
   }
+
+  #map{
+      height: 250px;
+  }
