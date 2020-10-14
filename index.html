@@ -3,51 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hike Local</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css\style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body>
-
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <img src="logo_Project.png" width="112" height="28">
+      </a>
+      <a role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+  </nav>
   <section class="hero">
     <div class="hero-body">
-       
       <div class="container">
-        
-  </article>
         <h1 class="title">
-          Hike Local
+          Welcome to Hike Local
         </h1>
         <h2 class="subtitle">
-          Hero subtitle
-        </h2>        
+          A source for local trails 
+        </h2>
       </div>
     </div>
   </section>
-
-    <div class="container">
-     
-        <div class="tile is-ancestor">
-        <div class="tile is-4 is-vertical box">
-          <div class="tile box">
-              <article class="tile is-child notification inputB">
-              <p class="title">Welcome</p>
-              <p class="subtitle">Your source for local trails</p>
-            </article>
-            <!-- Top tile -->
-          </div>
-          <div class="tile box">
-            <article class="tile is-child is-info">
-              <figure class="image is-2by1">
-                  <img src="image.png" alt="logo">
-              </figure>
-          </article>   
-           <!-- Bottom tile -->
-          </div>
-        </div>
+        
         <div class="tile box">  
-          <article class="tile is-child is-info">
+          <article class="tile is-child is-info" id="map">
             <figure class="image is-2by1">
              <a href="#"><img src="google-maps-1797882_960_720.png"></a>
             </figure>
@@ -55,14 +43,13 @@
           <!-- This tile will take up the whole vertical space -->
         </div>        
       </div>
-      
-
-      <div class="tile is-parent">
+      <div class="tile is-parent searchPage">
         <article class="tile is-child notification inputB">
           <p class="title">Get Started!</p>
-          <p class="subtitle">Enter you city and desired difficulty level below.</p>
+          <p class="subtitle">Search by:</p>
+
+
           <div class="content">
-            
             <div class="control">                
                 <p class="control has-icons-left">                    
                 <input class="input is-hovered" type="text" placeholder="Enter City">
@@ -70,46 +57,56 @@
                   <i class="fas fa-rainbow"></i>
                 </span>
               </p>
-              
-              </div> 
+            </div> 
 
-              <div class="control">
+            <div class="control">
                 <p class="control has-icons-left">
                 <input class="input is-hovered input" type="text" placeholder="Trail Rating?">
                 <span class="icon is-large is-left">
                   <i class="fas fa-air-freshener"></i>
                 </span>               
-              </p>
+                </p>
+            </div>
 
-              <div class="control">
+            <div class="control">
                 <p class="control has-icons-left">
                 <input class="input is-hovered input" type="text" placeholder="Difficulty">
                 <span class="icon is-large is-left">
                   <i class="fas fa-air-freshener"></i>
                 </span>               
               </p>
+            </div>
 
-              <div class="control">
+            <div class="control">
                 <p class="control has-icons-left">
                 <input class="input is-hovered input" type="text" placeholder="Mile Range">
                 <span class="icon is-large is-left">
                   <i class="fas fa-air-freshener"></i>
                 </span>               
               </p>
+            </div>
 
-              <button class="button">
+            <button class="button">
                 <span class="icon">
                   <i class="fas fa-hiking"></i>
                 </span>
                 <span>To trails</span>
-              </button>
-              </div>
+            </button>
+            <button class="button">
+                <span class="icon">
+                  <i class="fas fa-redo"></i>
+                </span>
+              <span>Refresh</span>
+            </button>
+          </div>
           
           </div>
         </article>
       </div>    
         
     </div>
+
+    <div class="container resultPage"></div>
 
     <footer class="footer">
       <div class="content has-text-centered">
