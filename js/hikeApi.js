@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 // Hiking API
 var lat = "47.6062";
 var lon = "-122.3321";
@@ -12,4 +14,9 @@ $.ajax({
 }).then(function (response) {
     // console.log(JSON.stringify(response));
     console.log(response);
+});
+
+
+
+
 });

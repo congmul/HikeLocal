@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 // Access UI
 var resultPageEl = $(".resultPage");
 
@@ -32,4 +34,6 @@ $("#toTrails").on("click", function () {
 $("#home").on("click", function() {
   $(".searchPage").css("display", "block");
   $(".resultPage").text("");
+});
+
 });
