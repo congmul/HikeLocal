@@ -1,5 +1,3 @@
-// console.log(process.env.REACT_APP_API_KEY_GOOGLE_MAP);
-
 // Current Location Map ( Google MAP API )
 let map, infoWindow;
 
@@ -14,14 +12,12 @@ function currentMap() {
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
-    console.log(navigator.geolocation);
     navigator.geolocation.getCurrentPosition(
       (position) => {
         const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        // console.log("position: "+ JSON.stringify(position.coords.latitude));
         infoWindow.setPosition(pos);
         infoWindow.setContent("You here!");
         infoWindow.open(map);
@@ -36,7 +32,8 @@ function currentMap() {
     handleLocationError(false, infoWindow, map.getCenter());
   }
 
-  // initZoomControl(map);
+  // Add Zoom Control on the map.
+  initZoomControl(map);
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -47,4 +44,17 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
       : "Error: Your browser doesn't support geolocation."
   );
   infoWindow.open(map);
+}
+
+function initZoomControl(map) {
+  document.querySelector(".zoom-control-in").onclick = function () {
+    map.setZoom(map.getZoom() + 1);
+  };
+
+  document.querySelector(".zoom-control-out").onclick = function () {
+    map.setZoom(map.getZoom() - 1);
+  };
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(
+    document.querySelector(".zoom-control")
+  );
 }
