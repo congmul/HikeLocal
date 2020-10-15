@@ -19,7 +19,7 @@ function currentMap() {
           lng: position.coords.longitude,
         };
         infoWindow.setPosition(pos);
-        infoWindow.setContent("You here!");
+        infoWindow.setContent("You are here!");
         infoWindow.open(map);
         map.setCenter(pos);
       },

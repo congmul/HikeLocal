@@ -3,16 +3,26 @@ $(document).ready(function () {
 // Access UI
 var resultPageEl = $(".resultPage");
 
-// Declare variable
+// Declare Global variables
 var address = "";
+var trailRating = 0;
 var latitude = "";
 var longitude = "";
-var locations = [];
+var maxDistance = 0;
+var maxResults = 50;  // test value
+var sortBy = "distance"; // test value
+var locations;
+
 
 // Click event when clicking To trails button
-$("#toTrails").on("click", function () {
+$("#toTrails").on("click", function () {    
     address = $("#address").val();
     // console.log(address);
+
+    // Capture User Input
+    trailRating = $("#trail-rating").val();
+    console.log(trailRating);
+    maxDistance = parseInt($("#search-radius").val());
 
     $(".searchPage").css("display", "none");
 
@@ -27,9 +37,16 @@ $("#toTrails").on("click", function () {
         longitude = response.results[0].geometry.location.lng;
         console.log("latitude: " + latitude+" longitude:"+longitude);
 
-        // Call Hikin App
-        hiking(latitude, longitude);
+        // Call Hiking API
+        queryHikingProject(latitude, longitude, maxDistance, maxResults, sortBy, trailRating).then(data => {
+          // Store returned trails array
+          locations = data;
+        });
+        // hiking(latitude, longitude);
       });
+
+     
+
 });
 
 // Go back to search page
