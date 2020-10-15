@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 weatherDisplay(47.6062, -122.3321);
 
 
@@ -16,3 +18,5 @@ function weatherDisplay(latitude, longitude) {
     });
 
 }
+
+});

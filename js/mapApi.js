@@ -1,3 +1,5 @@
+$(document).ready(function () {
+
 // Current Location Map ( Google MAP API )
 let map, infoWindow;
 
@@ -59,7 +61,7 @@ function initZoomControl(map) {
   );
 }
 
-// Google Map - Markers!!!!
+// Result Map Markers!!!!
 function resultMap(latitude, longitude) {
   console.log("inside MapAPI: " + latitude + ", " + longitude);
   console.log("inside MapAPI - Objects" + locations);
@@ -85,3 +87,5 @@ function resultMap(latitude, longitude) {
       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
   });
 }
+
+});
