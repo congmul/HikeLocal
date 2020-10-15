@@ -1,5 +1,3 @@
-$(document).ready(function () {
-
 // Current Location Map ( Google MAP API )
 let map, infoWindow;
 
@@ -87,5 +85,3 @@ function resultMap(latitude, longitude) {
       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
   });
 }
-
-});
