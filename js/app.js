@@ -26,8 +26,10 @@ $("#toTrails").on("click", function () {
         latitude = response.results[0].geometry.location.lat;
         longitude = response.results[0].geometry.location.lng;
         console.log("latitude: " + latitude+" longitude:"+longitude);
-      });
 
+        // Call Hikin App
+        hiking(latitude, longitude);
+      });
 });
 
 // Go back to search page
@@ -35,5 +37,8 @@ $("#home").on("click", function() {
   $(".searchPage").css("display", "block");
   $(".resultPage").text("");
 });
+
+
+
 
 });
