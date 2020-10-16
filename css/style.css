@@ -12,6 +12,9 @@ body {
   .float {
       float: left;
   }
+  .floatR {
+      float: right;
+  }
 
   .margin {
       margin-bottom: 150px;
@@ -43,4 +46,11 @@ body {
 
   .navbar {
     background-color: #9cc494;
+  }
+  .rightNav {
+      width: 200px;
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      background-color: #9CC494;
   }

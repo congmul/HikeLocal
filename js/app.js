@@ -1,5 +1,7 @@
   
 
+
+
 var lat = "47.6062";
 var lon = "-122.3321";
 var maxDistance = "1"; // in mile
@@ -13,4 +15,11 @@ $.ajax({
 }).then(function (response) {
     // console.log(JSON.stringify(response));
     console.log(response);
+
+
+
 });
+
+function buildQueryURL () {
+    var queryParams = 
+}
