@@ -1,29 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hike Local</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css\style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hike Local</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css\style.css" />
+
+  <!-- Google API LINK -->
+  <script defer async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI&callback=currentMap"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 </head>
+
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <img src="logo_Project.png" width="112" height="28">
-      </a>
-      <a role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <img src="assets/img/logo_Project.png" id="home" width="112" height="28">
+      <!-- </a> -->
+      <!-- <a role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
-      </a>
+      </a> -->
     </div>
     <button class="rightNav button is-outlined">
+<<<<<<< HEAD
       
       <span>Search</span>
   </button>
+=======
+      <span>Search</span>
+    </button>
+>>>>>>> develop
   </nav>
 
   <section class="hero">
@@ -33,12 +46,13 @@
           Welcome to Hike Local
         </h1>
         <h2 class="subtitle">
-          A source for local trails 
+          A source for local trails
         </h2>
       </div>
     </div>
   </section>
 
+<<<<<<< HEAD
   
         
         <div class="tile box">  
@@ -111,20 +125,117 @@
         </article>
       </div>    
         
+=======
+  <div class="tile box">
+    <div class="tile is-child is-info" id="map">
     </div>
 
-    <div class="container resultPage"></div>
-
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          By Students @ UW Bootcamp
-        </p>
+    <!-- This is for Zoom Control of Map (it is invisible)-->
+    <div style="display: none">
+      <div class="controls zoom-control">
+        <button class="zoom-control-in" title="Zoom In">+</button>
+        <button class="zoom-control-out" title="Zoom Out">−</button>
       </div>
-    </footer>
+>>>>>>> develop
+    </div>
 
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js\app.js"></script>   
+    <!-- This tile will take up the whole vertical space -->
+  </div>
+  </div>
+  <div class="tile is-parent searchPage">
+    <article class="tile is-child notification inputB">
+      <p class="title">Get Started!</p>
+      <p class="subtitle">Search by:</p>
+
+
+      <div class="content">
+        <div class="control">
+          <p class="control has-icons-left">
+            <input class="input is-hovered" id="address" type="text" placeholder="Enter City">
+            <span class="icon is-medium is-left">
+              <i class="fas fa-rainbow"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="control">
+          <p class="control has-icons-left">
+            <!-- Note by Scott Nelson -->
+            <!-- This should be a dropdown with values of 0 to 4 -->
+            <input class="input is-hovered input" type="text" placeholder="Trail Rating?"> 
+            <!-- Use a select instead of input-->
+            <!--
+              
+
+            -->
+            <label for="trail-rating">Minimum Trail Quality Rating in Stars</label>
+            <select name="trail-rating" id="trail-rating">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2" selected>2</option> 
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <span class="icon is-large is-left">
+              <i class="fas fa-air-freshener"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="control">
+          <p class="control has-icons-left">
+            <input class="input is-hovered input" type="text" placeholder="Difficulty">
+            <span class="icon is-large is-left">
+              <i class="fas fa-air-freshener"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="control">
+          <p class="control has-icons-left">
+            <input class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+            <span class="icon is-large is-left">
+              <i class="fas fa-air-freshener"></i>
+            </span>
+          </p>
+        </div>
+
+        <button class="button" id="toTrails">
+          <span class="icon">
+            <i class="fas fa-hiking" id="hiker-icon"></i>
+          </span>
+          <span>To trails</span>
+        </button>
+        <button class="button">
+          <span class="icon">
+            <i class="fas fa-redo"></i>
+          </span>
+          <span>Refresh</span>
+        </button>
+      </div>
+
+  </div>
+  </article>
+  </div>
+
+  </div>
+
+  <div class="container resultPage"></div>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        By Students @ UW Bootcamp
+      </p>
+    </div>
+  </footer>
+
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+  <script src="js\hikeApi.js"></script>
+  <script src="js\mapApi.js"></script>
+  <script src="js\weatherApi.js"></script>
+  <script src="js\app.js"></script>
 </body>
+
 </html>
