@@ -60,9 +60,11 @@ function initZoomControl(map) {
 }
 
 // Result Map Markers!!!!
-function resultMap(latitude, longitude) {
+function resultMap(latitude, longitude, locationsGoogleMap) {
+  let jSonlocationsGoogleMap = new Object();
+  jSonlocationsGoogleMap = JSON.stringify(locationsGoogleMap);
   console.log("inside MapAPI: " + latitude + ", " + longitude);
-  console.log("inside MapAPI - Objects" + locations);
+  console.log("inside MapAPI - Objects" + locationsGoogleMap);
   const map = new google.maps.Map(document.getElementById("mapResult"), {
     zoom: 10,
     center: { lat: latitude, lng: longitude },
@@ -71,9 +73,9 @@ function resultMap(latitude, longitude) {
   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   // Add some markers to the map.
   // Note: The code uses the JavaScript Array.prototype.map() method to
-  // create an array of markers based on a given "locations" array.
+  // create an array of markers based on a given "locationsGoogleMap" array.
   // The map() method here has nothing to do with the Google Maps API.
-  const markers = locations.map((location, i) => {
+  const markers = locationsGoogleMap.map((location, i) => {
     return new google.maps.Marker({
       position: location,
       label: labels[i % labels.length],
