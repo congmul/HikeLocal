@@ -84,3 +84,10 @@ body {
     margin: 1px;
     padding: 0;
   }
+  .rightNav {
+      width: 200px;
+      position: absolute;
+      top: 25px;
+      right: 30px;
+      background-color: #9cc494;
+  }
