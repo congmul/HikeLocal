@@ -11,8 +11,7 @@
   <link rel="stylesheet" href="css\style.css" />
 
   <!-- Google API LINK -->
-  <script defer async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI&callback=currentMap"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI&callback=currentMap" defer async></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 </head>
@@ -138,7 +137,9 @@
 
   </div>
 
-  <div class="container resultPage"></div>
+  <div class="container resultPage">
+    <div id="mapResult"></div>
+  </div>
 
   <footer class="footer">
     <div class="content has-text-centered">

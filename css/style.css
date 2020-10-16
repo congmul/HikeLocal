@@ -52,7 +52,9 @@ body {
   #map{
       height: 200px;
   }
-
+  #mapResult{
+    height: 300px;
+  }
   /* This style for Zoom controller of MAP */
   .gm-style .controls {
     font-size: 28px;
