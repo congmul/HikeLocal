@@ -31,111 +31,110 @@
       <span>Search</span>
     </button>
   </nav>
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Welcome to Hike Local
-        </h1>
-        <h2 class="subtitle">
-          A source for local trails
-        </h2>
-      </div>
-    </div>
-  </section>
-
-  <div class="tile box">
-    <div class="tile is-child is-info" id="map">
-    </div>
-
-    <!-- This is for Zoom Control of Map (it is invisible)-->
-    <div style="display: none">
-      <div class="controls zoom-control">
-        <button class="zoom-control-in" title="Zoom In">+</button>
-        <button class="zoom-control-out" title="Zoom Out">−</button>
-      </div>
-    </div>
-
-    <!-- This tile will take up the whole vertical space -->
-  </div>
-  </div>
-  <div class="tile is-parent searchPage">
-    <article class="tile is-child notification inputB">
-      <p class="title">Get Started!</p>
-      <p class="subtitle">Search by:</p>
-
-
-      <div class="content">
-        <div class="control">
-          <p class="control has-icons-left">
-            <input class="input is-hovered" id="address" type="text" placeholder="Enter City">
-            <span class="icon is-medium is-left">
-              <i class="fas fa-rainbow"></i>
-            </span>
-          </p>
+  <section id="landing-page">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Welcome to Hike Local
+          </h1>
+          <h2 class="subtitle">
+            A source for local trails
+          </h2>
         </div>
+      </div>
+    </section>
+  
+    <div class="tile box">
+      <div class="tile is-child is-info" id="map"></div>  
+      <!-- This is for Zoom Control of Map (it is invisible)-->
+      <div style="display: none">
+        <div class="controls zoom-control">
+          <button class="zoom-control-in" title="Zoom In">+</button>
+          <button class="zoom-control-out" title="Zoom Out">−</button>
+        </div>
+      </div>
 
-        <div class="control">
-          <p class="control has-icons-left">
+      <!-- This tile will take up the whole vertical space -->
+    </div>
+    
+    <div class="tile is-parent">
+      <article class="tile is-child notification inputB">
+        <p class="title">Get Started!</p>
+        <p class="subtitle">Search by:</p>
+
+
+        <div class="content">
+          <div class="control">
+            <p class="control has-icons-left">
+              <input class="input is-hovered" id="address" type="text" placeholder="Enter City">
+              <span class="icon is-medium is-left">
+                <i class="fas fa-rainbow"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="control">
+            <p class="control has-icons-left">
             <!-- Note by Scott Nelson -->
             <!-- This should be a dropdown with values of 0 to 4 -->
-            <input class="input is-hovered input" type="text" placeholder="Trail Rating?"> 
+              <input class="input is-hovered input" type="text" placeholder="Trail Rating?"> 
             <!-- Use a select instead of input-->
             <!--
               
 
             -->
-            <label for="trail-rating">Minimum Trail Quality Rating</label>
-            <select name="trail-rating" id="trail-rating">
-              <option value="0">0 Stars</option>
-              <option value="1">1 Star</option>
-              <option value="2" selected>2 Stars</option> 
-              <option value="3">3 Stars</option>
-              <option value="4">4 Stars</option>
-            </select>
-            <span class="icon is-large is-left">
+              <label for="trail-rating">Minimum Trail Quality Rating</label>
+              <select name="trail-rating" id="trail-rating">
+                <option value="0">0 Stars</option>
+                <option value="1">1 Star</option>
+                <option value="2" selected>2 Stars</option> 
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+              </select>
+              <span class="icon is-large is-left">
               <i class="fas fa-air-freshener"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="control">
+            <p class="control has-icons-left">
+              <input class="input is-hovered input" type="text" placeholder="Difficulty">
+              <span class="icon is-large is-left">
+                <i class="fas fa-air-freshener"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="control">
+            <p class="control has-icons-left">
+              <input class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+              <span class="icon is-large is-left">
+                <i class="fas fa-air-freshener"></i>
+              </span>
+            </p>
+          </div>
+
+          <button class="button" id="toTrails">
+            <span class="icon">
+              <i class="fas fa-hiking" id="hiker-icon"></i>
             </span>
-          </p>
-        </div>
-
-        <div class="control">
-          <p class="control has-icons-left">
-            <input class="input is-hovered input" type="text" placeholder="Difficulty">
-            <span class="icon is-large is-left">
-              <i class="fas fa-air-freshener"></i>
+            <span>To trails</span>
+          </button>
+          <button class="button">
+            <span class="icon">
+              <i class="fas fa-redo"></i>
             </span>
-          </p>
+            <span>Refresh</span>
+          </button>
         </div>
-
-        <div class="control">
-          <p class="control has-icons-left">
-            <input class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
-            <span class="icon is-large is-left">
-              <i class="fas fa-air-freshener"></i>
-            </span>
-          </p>
-        </div>
-
-        <button class="button" id="toTrails">
-          <span class="icon">
-            <i class="fas fa-hiking" id="hiker-icon"></i>
-          </span>
-          <span>To trails</span>
-        </button>
-        <button class="button">
-          <span class="icon">
-            <i class="fas fa-redo"></i>
-          </span>
-          <span>Refresh</span>
-        </button>
-      </div>
-
-  </div>
-  </article>
-  </div>
-
-  </div>
+      </article>
+    </div>  
+  </section>
+  <section class="hidden" id="loading-page">
+    <h1><i class="fas fa-spinner fa-spin"></i>Finding Trails....</h1>
+  </section>
 
   <div class="container resultPage">
     <div id="mapResult"></div>

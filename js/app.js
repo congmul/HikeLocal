@@ -25,7 +25,8 @@ $(document).ready(function () {
         console.log(trailRating);
         maxDistance = parseInt($("#search-radius").val());
 
-        $(".searchPage").css("display", "none");
+        $("#landing-page").addClass("hidden");
+        $("#loading-page").removeClass();
 
         // Geolocation API transfer address to lat/lng
         var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI";
@@ -46,13 +47,13 @@ $(document).ready(function () {
 
             // Hiking Project API takes about 2-3 seconds to return the results depending on how many you ask for
             setTimeout(() => {
-                console.log(locations);
-
+                console.log(locations);               
                 // Take all lat/lng to use for Result map
                 for (let i = 0; i < locations.trails.length; i++) {
                     locationsGoogleMap.push({ "lat": locations.trails[i]["latitude"], "lng": locations.trails[i]["longitude"] });
                 }
 
+                $("#loading-page").addClass("hidden");
                 // Call result Map function.
                 resultMap(latitude, longitude, locationsGoogleMap);
 

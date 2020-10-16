@@ -97,3 +97,12 @@ body {
       right: 30px;
       background-color: #9cc494;
   }
+
+  .hidden {
+    display: none;
+  }
+
+  #loading-page {
+    text-align: center;
+    font-size: 3.0rem;
+  }
