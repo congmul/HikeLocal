@@ -9,6 +9,10 @@ body {
        
   }
 
+  #home {
+    margin: 5px;
+  }
+
   .float {
       float: left;
   }
