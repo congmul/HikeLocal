@@ -9,7 +9,7 @@ var trailRating = 0;
 var latitude = "";
 var longitude = "";
 var maxDistance = 0;
-var maxResults = 50;  // test value
+var maxResults = 500;  // maximum test value
 var sortBy = "distance"; // test value
 var locations;
 
@@ -40,8 +40,13 @@ $("#toTrails").on("click", function () {
         // Call Hiking API
         queryHikingProject(latitude, longitude, maxDistance, maxResults, sortBy, trailRating).then(data => {
           // Store returned trails array
-          locations = data;
+           locations = data;
         });
+        
+        // Hiking Project API takes about 2-3 seconds to return the results depending on how many you ask for
+        setTimeout(()=> {
+          console.log(locations);
+        }, 3000);
         // hiking(latitude, longitude);
       });
 
