@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hike Local</title>
-
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css\style.css" />
@@ -20,7 +20,7 @@
 <body>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <img src="assets/img/logo_Project.png" id="home" width="112" height="28">
+      <img src="Hike Local Logo (3) copy.png" id="home" width="112" height="28">
       <!-- </a> -->
       <!-- <a role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
@@ -29,15 +29,10 @@
       </a> -->
     </div>
     <button class="rightNav button is-outlined">
-<<<<<<< HEAD
-      
-      <span>Search</span>
-  </button>
-=======
       <span>Search</span>
     </button>
->>>>>>> develop
   </nav>
+  
 
   <section class="hero">
     <div class="hero-body">
@@ -52,80 +47,6 @@
     </div>
   </section>
 
-<<<<<<< HEAD
-  
-        
-        <div class="tile box">  
-          <article class="tile is-child is-info" id="map">
-            <figure class="image is-2by1">
-             <a href="#"><img src="google-maps-1797882_960_720.png"></a>
-            </figure>
-        </article>                   
-          <!-- This tile will take up the whole vertical space -->
-        </div>        
-      </div>
-      <div class="tile is-parent searchPage">
-        <article class="tile is-child notification inputB">
-          <p class="title">Get Started!</p>
-          <p class="subtitle">Search by:</p>
-
-
-          <div class="content">
-            <div class="control">                
-                <p class="control has-icons-left">                    
-                <input class="input is-hovered" type="text" placeholder="Enter City">
-                <span class="icon is-medium is-left">
-                  <i class="fas fa-rainbow"></i>
-                </span>
-              </p>
-            </div> 
-
-            <div class="control">
-                <p class="control has-icons-left">
-                <input class="input is-hovered input" type="text" placeholder="Trail Rating?">
-                <span class="icon is-large is-left">
-                  <i class="fas fa-air-freshener"></i>
-                </span>               
-                </p>
-            </div>
-
-            <div class="control">
-                <p class="control has-icons-left">
-                <input class="input is-hovered input" type="text" placeholder="Difficulty">
-                <span class="icon is-large is-left">
-                  <i class="fas fa-air-freshener"></i>
-                </span>               
-              </p>
-            </div>
-
-            <div class="control">
-                <p class="control has-icons-left">
-                <input class="input is-hovered input" type="text" placeholder="Mile Range">
-                <span class="icon is-large is-left">
-                  <i class="fas fa-air-freshener"></i>
-                </span>               
-              </p>
-            </div>
-
-            <button id="trailsButton" class="button">
-                <span class="icon">
-                  <i class="fas fa-hiking"></i>
-                </span>
-                <span>To trails</span>
-            </button>
-            <button class="button">
-                <span class="icon">
-                  <i class="fas fa-redo"></i>
-                </span>
-              <span>Refresh</span>
-            </button>
-          </div>
-          
-          </div>
-        </article>
-      </div>    
-        
-=======
   <div class="tile box">
     <div class="tile is-child is-info" id="map">
     </div>
@@ -136,7 +57,6 @@
         <button class="zoom-control-in" title="Zoom In">+</button>
         <button class="zoom-control-out" title="Zoom Out">−</button>
       </div>
->>>>>>> develop
     </div>
 
     <!-- This tile will take up the whole vertical space -->
@@ -162,20 +82,21 @@
           <p class="control has-icons-left">
             <!-- Note by Scott Nelson -->
             <!-- This should be a dropdown with values of 0 to 4 -->
-            <input class="input is-hovered input" type="text" placeholder="Trail Rating?"> 
-            <!-- Use a select instead of input-->
-            <!--
-              
-
-            -->
-            <label for="trail-rating">Minimum Trail Quality Rating in Stars</label>
-            <select name="trail-rating" id="trail-rating">
+            <select class="input is-hovered input" type="text" placeholder="Trail Rating?">    
               <option value="0">0</option>
               <option value="1">1</option>
               <option value="2" selected>2</option> 
               <option value="3">3</option>
               <option value="4">4</option>
             </select>
+            <!-- Use a select instead of input-->
+            <!--
+              
+
+            -->
+            <!-- <label for="trail-rating">Minimum Trail Quality Rating in Stars</label>
+            <select name="trail-rating" id="trail-rating"> -->
+           
             <span class="icon is-large is-left">
               <i class="fas fa-air-freshener"></i>
             </span>
@@ -184,7 +105,14 @@
 
         <div class="control">
           <p class="control has-icons-left">
-            <input class="input is-hovered input" type="text" placeholder="Difficulty">
+            <select class="input is-hovered input" type="text" placeholder="Difficulty">
+              <option value="green">Easy</option>
+              <option value="blueGreen">Easy/Intermediate</option>
+              <option value="blue">Intermediate</option>
+              <option value="blueBlack">IntermediateX</option>
+              <option value="black">Difficult</option>
+              <option value="doubleBlack">Very Difficult</option>
+              </select>
             <span class="icon is-large is-left">
               <i class="fas fa-air-freshener"></i>
             </span>
@@ -193,9 +121,30 @@
 
         <div class="control">
           <p class="control has-icons-left">
-            <input class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+            <select class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+              <option value="1">1mi</option>
+              <option value="5">5mi</option>
+              <option value="10">10mi</option>
+              <option value="15">15mi</option>
+              <option value="20">20mi</option>
+              <option value="25">25mi</option>
+              <option value="50">50mi</option>
+              </select>
             <span class="icon is-large is-left">
               <i class="fas fa-air-freshener"></i>
+            </span>
+          </p>
+        </div>
+
+        <div class="conrol">
+          <p class="control has-icons-left">
+            <select class="input is-hovered input" type="text" placeholder="Sort By">
+              <option value="difficulty">Difficulty</option>
+              <option value="rating">Rating</option>
+              <option value="Mileage">Total miles</option>
+            </select>
+            <span class="icon is-large is-left">
+              <i class="fas fa-clipboard-list"></i>
             </span>
           </p>
         </div>
@@ -230,6 +179,7 @@
     </div>
   </footer>
 
+  <script type="text/javascript" src="/node_modules/bulma-accordion/dist/js/bulma-accordion.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
   <script src="js\hikeApi.js"></script>

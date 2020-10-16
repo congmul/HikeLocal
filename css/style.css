@@ -47,8 +47,6 @@ body {
   .navbar {
     background-color: #9cc494;
   }
-<<<<<<< HEAD
-=======
 
   #map{
       height: 200px;
@@ -89,15 +87,10 @@ body {
     margin: 1px;
     padding: 0;
   }
->>>>>>> develop
   .rightNav {
       width: 200px;
       position: absolute;
       top: 25px;
       right: 30px;
-<<<<<<< HEAD
-      background-color: #9CC494;
-=======
       background-color: #9cc494;
->>>>>>> develop
   }
