@@ -123,24 +123,50 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
         stars += emptyStar;
       }
     }
+
+    //Simplify difficulty description - Proposed by Scott Nelson
+    switch(locations.trails[i].difficulty){
+      case "green":
+        locations.trails[i].difficulty = "Easy";
+        break;
+      case "greenBlue":
+        locations.trails[i].difficulty = "Easy - Intermediate";
+        break;
+      case "blue":
+        locations.trails[i].difficulty = "Intermediate";
+        break;
+      case "blueBlack":
+        locations.trails[i].difficulty = "Intermediate - Hard";
+        break;
+      case "black":
+        locations.trails[i].difficulty = "Hard";
+        break;
+      case "dBlack":
+        locations.trails[i].difficulty = "Very Hard";
+        break;
+    }
+
     // ContentString for infowindows
-    let contentString =
-      '<img id="imgTrails" alt="No image" src = ' + locations.trails[i].imgSqSmall + ' >' +
+    let contentString =         
+      '<img id="imgTrails" alt="No image" src = ' + locations.trails[i].imgSqSmall + ' >' +         
       '<h1 id="firstHeading" class="firstHeading">' + locations.trails[i].name + '</h1>' +
       '<p class ="description">Difficuly : ' + locations.trails[i].difficulty + '</p>' +
-      '<p class ="description">Star : ' + stars + '</p>' +
-      '<p class ="description">Star : ' + parseFloat(locations.trails[i].stars) + ' / 5.0</p>' +
+      '<p class ="description">Trail Rating : ' + stars + '</p>' +
+      '<p class ="description">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
       '<p class ="description">Location : ' + locations.trails[i].location + '</p>' +
-      '<p class ="description Weather">Today : </p>' +
-      '<img id="weatherIcon" alt="No image" src = "http://openweathermap.org/img/w/' + weatherObject.current.weather[0].icon + '.png" >' +
-      '<p class ="description uvIndex">UV : ' + weatherObject.current.uvi + '</p>';
+      '<a href=' + locations.trails[i].url + 'class="info-link" target="_Blank">More Information</a>';  // idea by Scott
+      
+      // Weather API key calls exceeded
+      //'<p class ="description Weather">Today : </p>' +
+      //'<img id="weatherIcon" alt="No image" src = "http://openweathermap.org/img/w/' + weatherObject.current.weather[0].icon + '.png" >' +
+      //'<p class ="description uvIndex">UV : ' + weatherObject.current.uvi + '</p>';     
       // '<p class ="description uvIndex">LatLng in weather: ' + weatherObject.lat +', ' + weatherObject.lon+ '</p>'+
       // '<p class ="description uvIndex">LatLng in trails: ' + locations.trails[i].latitude +', ' + locations.trails[i].longitude + '</p>';
     infowindowResult[i] = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 800,
       minWidth: 450,
-    });
+    }); 
 
   // });
   }
