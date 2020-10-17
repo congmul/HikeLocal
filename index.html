@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hike Local</title>
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css\style.css" />
+
+  <!-- Google API LINK -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI&callback=currentMap"
+    defer async></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <img src="assets/img/logo_updated.png" id="home" width="90" height="23">
+    </div>
+    <button class="rightNav button is-outlined" id="searchBtn">
+      <span>Search</span>
+    </button>
+  </nav>
+  <section id="landing-page">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            Welcome to Hike Local
+          </h1>
+          <h2 class="subtitle">
+            A source for local trails
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <div class="tile box">
+      <div class="tile is-child is-info" id="map"></div>
+      <!-- This is for Zoom Control of Map (it is invisible)-->
+      <div style="display: none">
+        <div class="controls zoom-control">
+          <button class="zoom-control-in" title="Zoom In">+</button>
+          <button class="zoom-control-out" title="Zoom Out">−</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tile is-parent">
+      <article class="tile is-child notification inputB">
+        <p class="title">Get Started!</p>
+        <p class="subtitle">Search by:</p>
+
+        <div class="content">
+          <div class="control">
+            <p class="control has-icons-left">              
+              <input class="input is-hovered" id="address" type="text" placeholder="Enter City">           
+              <span class="icon is-medium is-left">
+                <i class="fas fa-rainbow"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="control">
+            <p class="control has-icons-left">
+             
+              <select class="input is-hovered input" type="text" placeholder="Trail Rating?">
+                <option value="">Trail Rating</option>
+                <option value="0">0 stars</option>
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+            </select>
+              <span class="icon is-large is-left">
+                <i class="fas fa-air-freshener"></i>
+              </span>
+            </p>
+          </div>
+
+          <div class="control">
+            <p class="control has-icons-left">
+              <select class="input is-hovered input" type="text" placeholder="Difficulty">
+                <option value="">Difficulty</option>
+                <option style="color:#2fef09; font-weight: 900" value="green">Easy</option>
+                <option style="color: #52c2d3; font-weight: 900" value="greenBlue">Easy/Intermediate</option>
+                <option style="color: #1942e5; font-weight: 900" value="blue">Intermediate</option>
+                <option style="color: #0b5e7a; font-weight: 900" value="blueBlack">Intermediate</option>
+                <option style="color: #44565b; font-weight: 900" value="black">Difficult</option>
+                <option style="color: black; font-weight: 900" value="doubleBlack">Very Difficult</option>
+                </select>
+              <span class="icon is-large is-left">
+                <i class="fas fa-air-freshener"></i>
+              </span>
+            </p>
+          </div>
+
+          
+
+          <div class="control">
+            <p class="control has-icons-left">
+              <select class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+                <option value="">Mile Range</option>
+                <option style="font-family: Faster One" value="1">1mi</option>
+                <option style="font-family: Faster One" value="5">5mi</option>
+                <option style="font-family: Faster One" value="10">10mi</option>
+                <option style="font-family: Faster One" value="15">15mi</option>
+                <option style="font-family: Faster One" value="20">20mi</option>
+                <option style="font-family: Faster One" value="30">30mi</option>
+                <option style="font-family: Faster One" value="50">50mi</option>
+                </select>
+              <span class="icon is-large is-left">
+                <i class="fas fa-air-freshener"></i>
+              </span>
+            </p>
+          </div>
+          
+
+          
+
+          <button class="button" id="toTrails">
+            <span class="icon">
+              <i class="fas fa-hiking" id="hiker-icon"></i>
+            </span>
+            <span>To trails</span>
+          </button>
+          <button class="button">
+            <span class="icon">
+              <i class="fas fa-redo"></i>
+            </span>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </article>
+    </div>
+  </section>
+  <section class="hidden" id="loading-page">
+    <h1><i class="fas fa-spinner fa-spin"></i> Finding Trails....</h1>
+  </section>
+
+  <div class="container resultPage">
+    <div id="mapResult"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        By Students @ UW Bootcamp
+      </p>
+    </div>
+  </footer>
+
+  
+  
+  <script type="text/javascript" src="/node_modules/bulma-accordion/dist/js/bulma-accordion.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="js\hikeApi.js"></script>
+  <script src="js\mapApi.js"></script>
+  <script src="js\weatherApi.js"></script>
+  <script src="js\app.js"></script>
+</body>
+
+</html>
