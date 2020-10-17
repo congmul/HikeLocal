@@ -105,6 +105,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
   });
   console.log("markers : ");
   console.log(markers);
+  
   for (let i = 0; i < markers.length; i++) {
    
     // Create Star icon
@@ -133,7 +134,9 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
       '<p class ="description">Location : ' + locations.trails[i].location + '</p>' +
       '<p class ="description Weather">Today : </p>' +
       '<img id="weatherIcon" alt="No image" src = "http://openweathermap.org/img/w/' + weatherObject.current.weather[0].icon + '.png" >' +
-      '<p class ="description uvIndex">UV : ' + weatherObject.current.uvi + '</p>';
+      '<p class ="description uvIndex">UV : ' + weatherObject.current.uvi + '</p>' + 
+      // '<button id ="saveBtn">Save</button>';
+      '<button id ="saveBtn" onclick="saveFunction()">Save</button>';
     infowindowResult[i] = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 800,
@@ -189,6 +192,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
       infowindowResult[i].open(map, markers[i]);
     
     });
+
   }
 
   // Add a marker clusterer to manage the markers.
@@ -197,4 +201,34 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
   });
 
+
+  // map.setCenter({"lat":latitude, "lng":longitude});
+  // console.log("lat: " +latitude, "lng: " +longitude);
 }
+let saveArray = [];
+let saveObjects = new Object();
+function saveFunction() {
+  
+  // saveObjects["name"] = $("#firstHeading").val();
+  // $(this).val();
+  // console.log(window.document.getElementById('firstHeading'));
+  console.log(window.document.getElementById('firstHeading').textContent);
+  saveObjects["name"] = window.document.getElementById('firstHeading').textContent;
+  saveArray.push(saveObjects);
+  localStorage.setItem("userSave", JSON.stringify(saveArray));
+}
+
+$("#displayUserSave").on("click", function(){
+  // for (let i = 0; localStorage.length; i++){
+    let divEl = $("<div>");
+    divEl.text(localStorage.getItem("userSave"));
+    // divEl.text("test");
+    $(".resultPage").append(divEl);
+  // }
+});
+
+ 
+  // $(".gm-style-iw").on("click", ".gm-style-iw-d", "#saveBtn", function(e){
+  //   e.preventDefault();
+  //   console.log("test");
+  // });

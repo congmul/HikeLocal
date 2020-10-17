@@ -85,4 +85,10 @@ $(document).ready(function () {
         // weatherObjectTest = "";
     });
 
+    console.log("");
+    let userSave = [];
+    userSave = localStorage.getItem("userSave").split("}");
+    console.log(userSave.length);
+    console.log(userSave);
+
 });
