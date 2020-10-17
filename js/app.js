@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+
+    
     // Access UI
     var resultPageEl = $(".resultPage");
 
