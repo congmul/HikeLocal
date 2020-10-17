@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+  $("serch-radius option:selected").text();
+  
+ 
+
 // Access UI
 var resultPageEl = $(".resultPage");
 

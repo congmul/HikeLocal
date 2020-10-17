@@ -17,6 +17,8 @@ function weatherDisplay(latitude, longitude) {
         console.log(response);
     });
 
+
+    
 }
 
 });
