@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Access UI
-    var resultPageEl = $(".resultPage");
+    var resultPageEl = $(".resultPage"); // is this used by anthing? - Scott
 
     // Declare Global variables
     var address = "";
@@ -9,7 +9,7 @@ $(document).ready(function () {
     var latitude = "";
     var longitude = "";
     var maxDistance = 0;
-    var maxResults = 500;  // maximum test value
+    var maxResults = 50;  // test value
     var sortBy = "distance"; // test value
     var locations;           // Hiking data object
     var weatherObject;
