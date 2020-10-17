@@ -49,11 +49,12 @@ body {
     background-color: #9cc494;
   }
 
+  /* Map Style */
   #map{
       height: 200px;
   }
   #mapResult{
-    height: 300px;
+    height: 500px;
   }
   /* This style for Zoom controller of MAP */
   .gm-style .controls {
@@ -105,4 +106,32 @@ body {
   #loading-page {
     text-align: center;
     font-size: 3.0rem;
+  }
+
+
+  /* infowindow Style */
+  .firstHeading{
+      font-size: 15px;
+      font-weight: 1000;
+      margin-bottom: 15px;
+      color: green;
+  }
+  #imgTrails{
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+      width: 150px;
+      
+  }
+  .description{
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .starStyle{
+      color:gold;
+  }
+  .Weather{
+      font-weight: 1000;
+      margin-top: 18px;
+      float: left;
   }
