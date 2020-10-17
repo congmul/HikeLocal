@@ -8,6 +8,7 @@
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css\style.css" />
 
   <!-- Google API LINK -->
@@ -58,8 +59,8 @@
 
         <div class="content">
           <div class="control">
-            <p class="control has-icons-left">
-              <input class="input is-hovered" id="address" type="text" placeholder="Enter City">
+            <p class="control has-icons-left">              
+              <input class="input is-hovered" id="address" type="text" placeholder="Enter City">           
               <span class="icon is-medium is-left">
                 <i class="fas fa-rainbow"></i>
               </span>
@@ -68,22 +69,15 @@
 
           <div class="control">
             <p class="control has-icons-left">
-              <!-- Note by Scott Nelson -->
-              <!-- This should be a dropdown with values of 0 to 4 -->
-              <input class="input is-hovered input" type="text" placeholder="Trail Rating?">
-              <!-- Use a select instead of input-->
-              <!--
-              
-
-            -->
-              <label for="trail-rating">Minimum Trail Quality Rating</label>
-              <select name="trail-rating" id="trail-rating">
-                <option value="0">0 Stars</option>
-                <option value="1">1 Star</option>
-                <option value="2" selected>2 Stars</option>
-                <option value="3">3 Stars</option>
-                <option value="4">4 Stars</option>
-              </select>
+             
+              <select class="input is-hovered input" type="text" placeholder="Trail Rating?">
+                <option value="">Trail Rating</option>
+                <option value="0">0 stars</option>
+                <option value="1">1 star</option>
+                <option value="2">2 stars</option>
+                <option value="3">3 stars</option>
+                <option value="4">4 stars</option>
+            </select>
               <span class="icon is-large is-left">
                 <i class="fas fa-air-freshener"></i>
               </span>
@@ -92,10 +86,14 @@
 
           <div class="control">
             <p class="control has-icons-left">
-              <select id="social" class="input is-hovered input" type="text" placeholder="Difficulty">
-                <option valu="green">Green<a href="#"><img src="green.png" height="25px" width="25px"></a></option>
-                <option value="greenBlue">Green Blue</option>
-
+              <select class="input is-hovered input" type="text" placeholder="Difficulty">
+                <option value="">Difficulty</option>
+                <option style="color:#2fef09; font-weight: 900" value="green">Easy</option>
+                <option style="color: #52c2d3; font-weight: 900" value="greenBlue">Easy/Intermediate</option>
+                <option style="color: #1942e5; font-weight: 900" value="blue">Intermediate</option>
+                <option style="color: #0b5e7a; font-weight: 900" value="blueBlack">Intermediate</option>
+                <option style="color: #44565b; font-weight: 900" value="black">Difficult</option>
+                <option style="color: black; font-weight: 900" value="doubleBlack">Very Difficult</option>
                 </select>
               <span class="icon is-large is-left">
                 <i class="fas fa-air-freshener"></i>
@@ -107,12 +105,24 @@
 
           <div class="control">
             <p class="control has-icons-left">
-              <input class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+              <select class="input is-hovered input" type="text" placeholder="Mile Range" id="search-radius">
+                <option value="">Mile Range</option>
+                <option style="font-family: Faster One" value="1">1mi</option>
+                <option style="font-family: Faster One" value="5">5mi</option>
+                <option style="font-family: Faster One" value="10">10mi</option>
+                <option style="font-family: Faster One" value="15">15mi</option>
+                <option style="font-family: Faster One" value="20">20mi</option>
+                <option style="font-family: Faster One" value="30">30mi</option>
+                <option style="font-family: Faster One" value="50">50mi</option>
+                </select>
               <span class="icon is-large is-left">
                 <i class="fas fa-air-freshener"></i>
               </span>
             </p>
           </div>
+          
+
+          
 
           <button class="button" id="toTrails">
             <span class="icon">
