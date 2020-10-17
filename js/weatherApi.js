@@ -1,7 +1,9 @@
-$(document).ready(function () {
+const queryWeather = async (latitude, longitude) => {
+    const apiKey = "55b9b01153577ab02bdcfe93626df0e5";
 
-weatherDisplay(47.6062, -122.3321);
+    let queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=hourly,minutely&units=imperial&appid=" + apiKey;
 
+<<<<<<< HEAD
 
 function weatherDisplay(latitude, longitude) {
 
@@ -22,3 +24,10 @@ function weatherDisplay(latitude, longitude) {
 }
 
 });
+=======
+    // send asynchronous request
+    const request = await fetch(queryURL);
+    const data = await request.json();
+    return data;
+}
+>>>>>>> develop

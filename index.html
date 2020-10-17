@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="css\style.css" />
 
   <!-- Google API LINK -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI&callback=currentMap" defer async></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI&callback=currentMap"
+    defer async></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
 </head>
@@ -20,14 +21,8 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <img src="assets/img/logo_updated.png" id="home" width="90" height="23">
-      <!-- </a> -->
-      <!-- <a role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a> -->
     </div>
-    <button class="rightNav button is-outlined">
+    <button class="rightNav button is-outlined" id="searchBtn">
       <span>Search</span>
     </button>
   </nav>
@@ -44,9 +39,9 @@
         </div>
       </div>
     </section>
-  
+
     <div class="tile box">
-      <div class="tile is-child is-info" id="map"></div>  
+      <div class="tile is-child is-info" id="map"></div>
       <!-- This is for Zoom Control of Map (it is invisible)-->
       <div style="display: none">
         <div class="controls zoom-control">
@@ -54,15 +49,12 @@
           <button class="zoom-control-out" title="Zoom Out">−</button>
         </div>
       </div>
-
-      <!-- This tile will take up the whole vertical space -->
     </div>
-    
+
     <div class="tile is-parent">
       <article class="tile is-child notification inputB">
         <p class="title">Get Started!</p>
         <p class="subtitle">Search by:</p>
-
 
         <div class="content">
           <div class="control">
@@ -76,12 +68,31 @@
 
           <div class="control">
             <p class="control has-icons-left">
+<<<<<<< HEAD
             <!-- Note by Scott Nelson -->
             <!-- This should be a dropdown with values of 0 to 4 -->
               <input class="input is-hovered input" type="text" placeholder="Trail Rating?"> 
                          
+=======
+              <!-- Note by Scott Nelson -->
+              <!-- This should be a dropdown with values of 0 to 4 -->
+              <input class="input is-hovered input" type="text" placeholder="Trail Rating?">
+              <!-- Use a select instead of input-->
+              <!--
+              
+
+            -->
+              <label for="trail-rating">Minimum Trail Quality Rating</label>
+              <select name="trail-rating" id="trail-rating">
+                <option value="0">0 Stars</option>
+                <option value="1">1 Star</option>
+                <option value="2" selected>2 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="4">4 Stars</option>
+              </select>
+>>>>>>> develop
               <span class="icon is-large is-left">
-              <i class="fas fa-air-freshener"></i>
+                <i class="fas fa-air-freshener"></i>
               </span>
             </p>
           </div>
@@ -124,10 +135,10 @@
           </button>
         </div>
       </article>
-    </div>  
+    </div>
   </section>
   <section class="hidden" id="loading-page">
-    <h1><i class="fas fa-spinner fa-spin"></i>Finding Trails....</h1>
+    <h1><i class="fas fa-spinner fa-spin"></i> Finding Trails....</h1>
   </section>
 
   <div class="container resultPage">
@@ -146,7 +157,7 @@
   
   <script type="text/javascript" src="/node_modules/bulma-accordion/dist/js/bulma-accordion.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js\hikeApi.js"></script>
   <script src="js\mapApi.js"></script>
   <script src="js\weatherApi.js"></script>

@@ -13,7 +13,8 @@ $(document).ready(function () {
     var maxDistance = 0;
     var maxResults = 500;  // maximum test value
     var sortBy = "distance"; // test value
-    var locations;
+    var locations;           // Hiking data object
+    var weatherObject;
     var locationsGoogleMap = []; // Result Google Map value
 
 
@@ -24,11 +25,11 @@ $(document).ready(function () {
 
         // Capture User Input
         trailRating = $("#trail-rating").val();
-        console.log(trailRating);
+        // console.log(trailRating);
         maxDistance = parseInt($("#search-radius").val());
 
-        $("#landing-page").addClass("hidden");
-        $("#loading-page").removeClass();
+        $("#landing-page").css("display", "none");
+        $("#loading-page").css("display", "block");
 
         // Geolocation API transfer address to lat/lng
         var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI";
@@ -36,6 +37,7 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            console.log("==== Lat/Lng of Location searched =====");
             console.log(response);
             latitude = response.results[0].geometry.location.lat;
             longitude = response.results[0].geometry.location.lng;
@@ -47,28 +49,42 @@ $(document).ready(function () {
                 locations = data;
             });
 
+            // Call Weather API
+            queryWeather(latitude, longitude).then(data => {
+                weatherObject = data;
+            });
+
             // Hiking Project API takes about 2-3 seconds to return the results depending on how many you ask for
             setTimeout(() => {
-                console.log(locations);               
+                // console.log(locations);               
                 // Take all lat/lng to use for Result map
                 for (let i = 0; i < locations.trails.length; i++) {
                     locationsGoogleMap.push({ "lat": locations.trails[i]["latitude"], "lng": locations.trails[i]["longitude"] });
                 }
+                $("#loading-page").css("display", "none");
 
-                $("#loading-page").addClass("hidden");
                 // Call result Map function.
-                resultMap(latitude, longitude, locationsGoogleMap);
+                resultMap(latitude, longitude, locationsGoogleMap, locations, weatherObject);
 
             }, 3000);
         });
 
     });
 
-    // Go back to search page
+    // Logo Btn : Go back to search page 
     $("#home").on("click", function () {
-        $(".searchPage").css("display", "block");
-        $(".resultPage").text("");
+        $("#landing-page").css("display", "block");
+        $("#mapResult").text("");
         locationsGoogleMap = [];
+        // weatherObjectTest = "";
+    });
+
+    // Search Btn : Go back to search page
+    $("#searchBtn").on("click", function () {
+        $("#landing-page").css("display", "block");
+        $("#mapResult").text("");
+        locationsGoogleMap = [];
+        // weatherObjectTest = "";
     });
 
 });
