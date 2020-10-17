@@ -1,12 +1,12 @@
 # Project-1: HIKE LOCAL
 
-This application will give users a list of hiking trails in their area based on a set of criteria.  Users will be asked their location, desired difficulty, and desired length.  Based on these inputs our app will generate a list of trails listed from easy to hard that they can try.  They will also be able to see the weather to expect during the morning, afternoon and evening.  Our app will also show a pic that will give a preview of what the area looks like.  This will be a useful tool for the weekend warriors looking for some new trails to try.
+This application will give users a list of hiking trails in their area based on a set of criteria.  Users will be asked their location, desired trail rating, desired difficulty, and desired length.  Based on these inputs, our app will generate a list of trails according to their search.  They will also be able to see the weather for that morning, afternoon and evening.  Our app will also show a picture that will give a preview of what the area looks like.  This will be a useful tool for the weekend warriors looking for some new trails to try.
 
 ## User Story
 
 ```
 AS a hiker
-I WANT to see hiking trails according to location and difficulty
+I WANT to see hiking trails according to location, trail rating, difficulty and/or mile range
 SO THAT I can plan to go on a hike
 ```
 
