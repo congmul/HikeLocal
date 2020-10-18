@@ -57,7 +57,7 @@ body {
       height: 200px;
   }
   #mapResult{
-    height: 10px;
+    height: 600px;
   }
   /* This style for Zoom controller of MAP */
   .gm-style .controls {
@@ -126,7 +126,6 @@ body {
       margin-right: 20px;
       margin-bottom: 20px;
       width: 150px;
-      
   }
   .description{
     font-weight: 500;
@@ -161,14 +160,6 @@ body {
       width: 350px;
   }
 
-
-  .card {
-    /* visibility: hidden; */
-    background-color: #f1be4fc0;
-    margin-left: 15px;
-    
-  }
-
   h1.title {
     font-family: "cabin sketch";
     color: #7a4709;
@@ -177,9 +168,19 @@ body {
 
 
   .subtitle {
-    text-decoration: underline;
+    /* text-decoration: underline; */
     font-family: cursive;
   }
 
-
+  .card {
+    /* visibility: hidden; */
+    background-color: #f1be4fc0;
+    margin-left: 15px;
+    width: 700px;
+    text-decoration: none;
+  }
  
+  .media-content p{
+      margin-bottom: 5px;
+      font-family: cursive;
+  }

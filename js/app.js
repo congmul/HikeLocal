@@ -23,6 +23,9 @@ $(document).ready(function () {
         address = $("#address").val();
         // console.log(address);
 
+        // User card reset
+        $(".displayCard").text("");
+
         // Capture User Input
         trailRating = $("#trail-rating").val();
         // console.log(trailRating);
@@ -78,7 +81,6 @@ $(document).ready(function () {
         $(".resultPage").css("display", "none");
         $("#mapResult").text("");
         locationsGoogleMap = [];
-        // weatherObjectTest = "";
     });
 
     // Search Btn : Go back to search page
@@ -87,7 +89,6 @@ $(document).ready(function () {
         $(".resultPage").css("display", "none");
         $("#mapResult").text("");
         locationsGoogleMap = [];
-        // weatherObjectTest = "";
     });
 
 });
