@@ -2,6 +2,7 @@
 
 // Decalre variables
 let map, infoWindow;
+let currentLocation = new Object;
 
 // Map function Start
 function currentMap() {
@@ -19,6 +20,8 @@ function currentMap() {
   if (navigator.geolocation) {   // navigator.geolocation returns a object that gives Web content access to the location of the device. 
     navigator.geolocation.getCurrentPosition(   //.getCurrentPosition(success[, error[, [options]])
       (position) => {
+        currentLocation["lat"] = position.coords.latitude;
+        currentLocation["lng"] = position.coords.longitude;
         const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -68,12 +71,20 @@ function initZoomControl(map) {
 // Decalre variables
 let infowindowResult = [];
 let weatherObjectTest;
+let infoWindowCurrentLocation;
 // Result Map with Markers function
 function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherObject) {
   const map = new google.maps.Map(document.getElementById("mapResult"), {
     zoom: 10,
     center: { lat: latitude, lng: longitude },
   });
+
+  // Add current Location on result map
+  infoWindowCurrentLocation = new google.maps.InfoWindow();
+  infoWindowCurrentLocation.setPosition(currentLocation);
+  infoWindowCurrentLocation.setContent("You are here!");
+  infoWindowCurrentLocation.open(map);
+
   console.log("=========== Trails =============== ");
   console.log(locations);
 
