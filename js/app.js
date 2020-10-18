@@ -16,7 +16,7 @@ $(document).ready(function () {
     var locations;           // Hiking data object
     var weatherObject;
     var locationsGoogleMap = []; // Result Google Map value
-
+    $(".resultPage").css("display", "none");
 
     // Click event when clicking To trails button
     $("#toTrails").on("click", function () {
@@ -58,6 +58,7 @@ $(document).ready(function () {
             setTimeout(() => {
                 // console.log(locations);               
                 // Take all lat/lng to use for Result map
+                $(".resultPage").css("display", "block");
                 for (let i = 0; i < locations.trails.length; i++) {
                     locationsGoogleMap.push({ "lat": locations.trails[i]["latitude"], "lng": locations.trails[i]["longitude"] });
                 }
@@ -74,6 +75,7 @@ $(document).ready(function () {
     // Logo Btn : Go back to search page 
     $("#home").on("click", function () {
         $("#landing-page").css("display", "block");
+        $(".resultPage").css("display", "none");
         $("#mapResult").text("");
         locationsGoogleMap = [];
         // weatherObjectTest = "";
@@ -82,15 +84,10 @@ $(document).ready(function () {
     // Search Btn : Go back to search page
     $("#searchBtn").on("click", function () {
         $("#landing-page").css("display", "block");
+        $(".resultPage").css("display", "none");
         $("#mapResult").text("");
         locationsGoogleMap = [];
         // weatherObjectTest = "";
     });
-
-    console.log("");
-    let userSave = [];
-    userSave = localStorage.getItem("userSave").split("}");
-    console.log(userSave.length);
-    console.log(userSave);
 
 });

@@ -162,27 +162,18 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
     let contentString =         
       '<img id="imgTrails" alt="No image" src = ' + locations.trails[i].imgSqSmall + ' >' +         
       '<h1 id="firstHeading" class="firstHeading">' + locations.trails[i].name + '</h1>' +
-      '<p class ="description">Difficuly : ' + locations.trails[i].difficulty + '</p>' +
-      '<p class ="description">Trail Rating : ' + stars + '</p>' +
-      '<p class ="description">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
-      '<p class ="description">Location : ' + locations.trails[i].location + '</p>' +
-      '<a href=' + locations.trails[i].url + 'class="info-link" target="_Blank">More Information</a>';  // idea by Scott
-      
-      // Weather API key calls exceeded
-      //'<p class ="description Weather">Today : </p>' +
-      //'<img id="weatherIcon" alt="No image" src = "http://openweathermap.org/img/w/' + weatherObject.current.weather[0].icon + '.png" >' +
-      //'<p class ="description uvIndex">UV : ' + weatherObject.current.uvi + '</p>';     
-      // '<p class ="description uvIndex">LatLng in weather: ' + weatherObject.lat +', ' + weatherObject.lon+ '</p>'+
-      // '<p class ="description uvIndex">LatLng in trails: ' + locations.trails[i].latitude +', ' + locations.trails[i].longitude + '</p>';
+      '<p class ="description" id ="difficulty">Difficuly : ' + locations.trails[i].difficulty + '</p>' +
+      '<p class ="description" id="trailRating">Trail Rating : ' + stars + '</p>' +
+      '<p class ="description" id="trailLength">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
+      '<p class ="description" id="Location">Location : ' + locations.trails[i].location + '</p>' +
+      '<a href=' + locations.trails[i].url + 'class="info-link" target="_Blank">More Information</a>' +  // idea by Scott
+      '<button id = "saveBtn" onclick ="saveFunction()">Save Trail</button>'; 
     infowindowResult[i] = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 800,
       minWidth: 450,
     }); 
-
-  // });
   }
-  // setTimeout(() => {
   // Use addListener function for all markers
   for (let i = 0; i < markers.length; i++) {
     markers[i].addListener("click", () => {
@@ -196,36 +187,66 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
     imagePath:
       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
   });
-// }, 3000);
 
-
-  // map.setCenter({"lat":latitude, "lng":longitude});
-  // console.log("lat: " +latitude, "lng: " +longitude);
 }
 let saveArray = [];
 let saveObjects = new Object();
 function saveFunction() {
-  
-  // saveObjects["name"] = $("#firstHeading").val();
-  // $(this).val();
-  // console.log(window.document.getElementById('firstHeading'));
   console.log(window.document.getElementById('firstHeading').textContent);
   saveObjects["name"] = window.document.getElementById('firstHeading').textContent;
+  saveObjects["difficulty"] = window.document.getElementById('difficulty').textContent;
+  saveObjects["trailRating"] = window.document.getElementById('trailRating').textContent;
+  saveObjects["Location"] = window.document.getElementById('Location').textContent;
   saveArray.push(saveObjects);
   localStorage.setItem("userSave", JSON.stringify(saveArray));
+  // localStorage.setItem("userSave", saveArray);
+  console.log(localStorage.getItem("userSave"));
 }
 
-$("#displayUserSave").on("click", function(){
-  // for (let i = 0; localStorage.length; i++){
-    let divEl = $("<div>");
-    divEl.text(localStorage.getItem("userSave"));
-    // divEl.text("test");
-    $(".resultPage").append(divEl);
-  // }
-});
 
- 
-  // $(".gm-style-iw").on("click", ".gm-style-iw-d", "#saveBtn", function(e){
-  //   e.preventDefault();
-  //   console.log("test");
-  // });
+// console.log(userSave.length);
+// console.log(userSave);
+  // $(".content").on("click", "#displayUserSave", function(){
+  //   let userSave = JSON.parse(localStorage.getItem("userSave"));
+  //   if (userSave !== null){
+  //   // for (let i = 0; localStorage.length; i++){
+  //     let divEl = $("<div>");
+  //     divEl.attr("class", "card-content userSaveDisplay");
+  
+  //     let pEl = $("<p>");
+  //     pEl.attr("class", "title");
+  //     pEl.text("testTitle");
+  //     let pElsub = $("<p>");
+  //     pElsub.attr("class", "subtitle");
+  //     pElsub.text("testSubTitle");
+  
+  //     // divEl.text(localStorage.getItem("userSave"));
+  //     divEl.append(pEl);
+  //     divEl.append(pElsub);
+  //     $(".displayCard").append(divEl);
+  //   }else {
+  //       console.log("Nulltest");
+  //     }
+  //   });
+  $(".content").on("click", "#displayUserSave", function(){
+    let userSave = JSON.parse(localStorage.getItem("userSave"));
+    if (userSave !== null){
+    // for (let i = 0; localStorage.length; i++){
+      let divEl = $("<div>");
+      divEl.attr("class", "card-content userSaveDisplay");
+  
+      let pEl = $("<p>");
+      pEl.attr("class", "title");
+      pEl.text("testTitle");
+      let pElsub = $("<p>");
+      pElsub.attr("class", "subtitle");
+      pElsub.text("testSubTitle");
+  
+      // divEl.text(localStorage.getItem("userSave"));
+      divEl.append(pEl);
+      divEl.append(pElsub);
+      $(".displayCard").append(divEl);
+    }else {
+        console.log("Nulltest");
+      }
+    });
