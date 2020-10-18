@@ -2,6 +2,7 @@
 
 // Decalre variables
 let map, infoWindow;
+let currentLocation = new Object;
 
 // Map function Start
 function currentMap() {
@@ -19,6 +20,8 @@ function currentMap() {
   if (navigator.geolocation) {   // navigator.geolocation returns a object that gives Web content access to the location of the device. 
     navigator.geolocation.getCurrentPosition(   //.getCurrentPosition(success[, error[, [options]])
       (position) => {
+        currentLocation["lat"] = position.coords.latitude;
+        currentLocation["lng"] = position.coords.longitude;
         const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -68,12 +71,20 @@ function initZoomControl(map) {
 // Decalre variables
 let infowindowResult = [];
 let weatherObjectTest;
+let infoWindowCurrentLocation;
 // Result Map with Markers function
 function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherObject) {
   const map = new google.maps.Map(document.getElementById("mapResult"), {
     zoom: 10,
     center: { lat: latitude, lng: longitude },
   });
+
+  // Add current Location on result map
+  infoWindowCurrentLocation = new google.maps.InfoWindow();
+  infoWindowCurrentLocation.setPosition(currentLocation);
+  infoWindowCurrentLocation.setContent("You are here!");
+  infoWindowCurrentLocation.open(map);
+
   console.log("=========== Trails =============== ");
   console.log(locations);
 
@@ -97,6 +108,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
   });
   console.log("markers : ");
   console.log(markers);
+  
   for (let i = 0; i < markers.length; i++) {
 
     // Call Weather API for all location
@@ -176,6 +188,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
     markers[i].addListener("click", () => {
       infowindowResult[i].open(map, markers[i]);
     });
+
   }
 
   // Add a marker clusterer to manage the markers.
@@ -185,4 +198,34 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
   });
 // }, 3000);
 
+
+  // map.setCenter({"lat":latitude, "lng":longitude});
+  // console.log("lat: " +latitude, "lng: " +longitude);
 }
+let saveArray = [];
+let saveObjects = new Object();
+function saveFunction() {
+  
+  // saveObjects["name"] = $("#firstHeading").val();
+  // $(this).val();
+  // console.log(window.document.getElementById('firstHeading'));
+  console.log(window.document.getElementById('firstHeading').textContent);
+  saveObjects["name"] = window.document.getElementById('firstHeading').textContent;
+  saveArray.push(saveObjects);
+  localStorage.setItem("userSave", JSON.stringify(saveArray));
+}
+
+$("#displayUserSave").on("click", function(){
+  // for (let i = 0; localStorage.length; i++){
+    let divEl = $("<div>");
+    divEl.text(localStorage.getItem("userSave"));
+    // divEl.text("test");
+    $(".resultPage").append(divEl);
+  // }
+});
+
+ 
+  // $(".gm-style-iw").on("click", ".gm-style-iw-d", "#saveBtn", function(e){
+  //   e.preventDefault();
+  //   console.log("test");
+  // });
