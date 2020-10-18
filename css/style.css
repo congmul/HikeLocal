@@ -140,6 +140,28 @@ body {
       margin-top: 18px;
       float: left;
   }
+
+  #saveBtn{
+      border: none;
+      border-radius: 2%;
+      height: 20px;
+      width: 400px;
+      display: block;
+      background-color: rgb(0, 90, 8);
+      color: white;
+  }
+  #saveBtn:hover{
+        cursor: pointer;
+      background-color: rgb(0, 122, 10);
+
+  }
+  .userSaveDisplay{
+      margin-top: 20px;
+      border: 1px solid green;
+      width: 350px;
+  }
+
+
   .card {
     /* visibility: hidden; */
     background-color: #f1be4fc0;
@@ -152,6 +174,7 @@ body {
     color: #7a4709;
     font-size: 50px;
   }
+
 
   .subtitle {
     text-decoration: underline;
