@@ -134,6 +134,12 @@ body {
   .starStyle{
       color:gold;
   }
+
+  .difficultyBackground{
+      background-color: yellow;
+      color:red;
+      padding: 2px;
+  }
   .Weather{
       font-weight: 1000;
       margin-top: 18px;
