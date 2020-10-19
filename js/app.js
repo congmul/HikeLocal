@@ -1,10 +1,5 @@
 $(document).ready(function () {
 
-
-    
-    // Access UI
-    // var resultPageEl = $(".resultPage"); // is this used by anthing? - Scott
-
     // Declare Global variables
     var address = "";
     var trailRating = 0;
@@ -29,7 +24,8 @@ $(document).ready(function () {
         trailRating = $("#trail-rating").val();
         difficulty = $("#difficultySearch").val();
         maxDistance = parseInt($("#search-radius").val());
-        console.log(difficulty);
+        console.log("========== 2. Take Data from a user : Address, Rating, Difficulty, Mile Range ==========");
+        console.log(address +", " + trailRating +", " + difficulty +", " + maxDistance);
 
         $("#landing-page").css("display", "none");
         $("#loading-page").css("display", "block");
@@ -40,10 +36,11 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
-            console.log("==== Lat/Lng of Location searched =====");
-            console.log(response);
+            // console.log("==== Lat/Lng of Location searched =====");
+            // console.log(response);
             latitude = response.results[0].geometry.location.lat;
             longitude = response.results[0].geometry.location.lng;
+            console.log("========== 3. Take latitude & longitude from Address: ==========");
             console.log("latitude: " + latitude + " longitude:" + longitude);
 
             // Call Hiking API

@@ -33,7 +33,7 @@ body {
   }
 
   .input {
-      width: 40%;
+      width: 80%;
   }
 
   .hero {
@@ -58,6 +58,9 @@ body {
   }
   #mapResult{
     height: 600px;
+  }
+  .tile{
+    margin-top:30px;
   }
   /* This style for Zoom controller of MAP */
   .gm-style .controls {
@@ -160,10 +163,13 @@ body {
       background-color: rgb(0, 122, 10);
 
   }
+  .displayCard{
+      /* max-width: 600px; */
+      margin-right:30px;
+  }
   .userSaveDisplay{
       margin-top: 20px;
       border: 1px solid green;
-      width: 350px;
   }
 
   h1.title {
@@ -200,4 +206,22 @@ body {
   }
   .tree {
     image-orientation: flip;
+  }
+
+  @media (max-width: 744px){
+    .tree{
+        display: none;
+    }
+  }
+
+  @media (max-width: 500px){
+    .cardImage{
+        width:100px;
+    }
+    .media-content{
+        font-size: 0.8rem;
+    }
+    .title.is-4{
+        font-size: 1.2rem;
+    }
   }

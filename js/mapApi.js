@@ -26,6 +26,7 @@ function currentMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
+        console.log("==========  1. Current Locations: "+ JSON.stringify(pos) +" ==========");
         infoWindow.setPosition(pos); // Set latlng on the infoWindow
         infoWindow.setContent("You are here!");
         infoWindow.open(map); // Opens this InfoWindow on the given map
@@ -85,13 +86,13 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, difficult
   infoWindowCurrentLocation.setContent("You are here!");
   infoWindowCurrentLocation.open(map);
 
-  console.log("=========== Trails =============== ");
+  console.log("=========== 4. Trails Information =============== ");
   console.log(locations);
 
   // console.log("========= weatherObject ==========");
   // console.log(weatherObject);
 
-  console.log("======= All LatLng searched ======");
+  console.log("======= 5. All LatLng searched ======");
   console.log(locationsGoogleMap);
   // Create an array of alphabetical characters used to label the markers.
   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -106,8 +107,8 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, difficult
       label: labels[i % labels.length],
     });
   });
-  console.log("markers : ");
-  console.log(markers);
+  // console.log("markers : ");
+  // console.log(markers);
   
   for (let i = 0; i < markers.length; i++) {
    
@@ -151,8 +152,8 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, difficult
         break;
     }
     let userSelectDifficulty = "";
-    console.log("difficulty in mapAPi");
-    console.log(difficulty);
+    // console.log("difficulty in mapAPi");
+    // console.log(difficulty);
     if(locations.trails[i].difficulty === difficulty){
       userSelectDifficulty = "difficultyBackground";
     }
@@ -190,7 +191,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, difficult
 }
 let saveArray = [];
 function saveFunction() {
-  console.log(window.document.getElementById('firstHeading').textContent);
+  // console.log(window.document.getElementById('firstHeading').textContent);
   let saveObjects = new Object();
   saveObjects["img"] = window.document.getElementById('imgTrails').getAttribute("src");
   saveObjects["name"] = window.document.getElementById('firstHeading').textContent;
@@ -209,7 +210,7 @@ function saveFunction() {
   $(".content").on("click", "#displayUserSave", function(){
     $(".displayCard").text("");
     let userSave = JSON.parse(localStorage.getItem("userSave"));
-    console.log("userSave");
+    console.log("========== 6. Information that a user stored ==========");
     console.log(userSave);
     if (userSave !== null){
     for (let i = 0; i < userSave.length; i++){
@@ -225,7 +226,7 @@ function saveFunction() {
       let pTrailLengthElsub = $("<p>");
       let pLocationElsub = $("<p>");
       let pLinkElsub = $("<a>");
-      divEl.attr("class", "card-content card userSaveDisplay");
+      divEl.attr("class", "card-content card userSaveDisplay rcorners");
       mediaDivEl.attr("class", "media");
       mediaLeftDivEl.attr("class", "media-left");
       figureEl.attr("class","cardImage");
