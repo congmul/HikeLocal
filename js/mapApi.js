@@ -26,6 +26,7 @@ function currentMap() {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
+        console.log("==========  1. Current Locations: "+ JSON.stringify(pos) +" ==========");
         infoWindow.setPosition(pos); // Set latlng on the infoWindow
         infoWindow.setContent("You are here!");
         infoWindow.open(map); // Opens this InfoWindow on the given map
@@ -73,7 +74,7 @@ let infowindowResult = [];
 let weatherObjectTest;
 let infoWindowCurrentLocation;
 // Result Map with Markers function
-function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherObject) {
+function resultMap(latitude, longitude, locationsGoogleMap, locations, difficulty) {
   const map = new google.maps.Map(document.getElementById("mapResult"), {
     zoom: 10,
     center: { lat: latitude, lng: longitude },
@@ -85,13 +86,13 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
   infoWindowCurrentLocation.setContent("You are here!");
   infoWindowCurrentLocation.open(map);
 
-  console.log("=========== Trails =============== ");
+  console.log("=========== 4. Trails Information =============== ");
   console.log(locations);
 
-  console.log("========= weatherObject ==========");
-  console.log(weatherObject);
+  // console.log("========= weatherObject ==========");
+  // console.log(weatherObject);
 
-  console.log("======= All LatLng searched ======");
+  console.log("======= 5. All LatLng searched ======");
   console.log(locationsGoogleMap);
   // Create an array of alphabetical characters used to label the markers.
   const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -106,8 +107,8 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
       label: labels[i % labels.length],
     });
   });
-  console.log("markers : ");
-  console.log(markers);
+  // console.log("markers : ");
+  // console.log(markers);
   
   for (let i = 0; i < markers.length; i++) {
    
@@ -129,32 +130,40 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
     }
 
     //Simplify difficulty description - Proposed by Scott Nelson
+    let difficultyDescription = "";
     switch(locations.trails[i].difficulty){
       case "green":
-        locations.trails[i].difficulty = "Easy";
+        difficultyDescription= "Easy";
         break;
       case "greenBlue":
-        locations.trails[i].difficulty = "Easy - Intermediate";
+        difficultyDescription= "Easy - Intermediate";
         break;
       case "blue":
-        locations.trails[i].difficulty = "Intermediate";
+        difficultyDescription= "Intermediate";
         break;
       case "blueBlack":
-        locations.trails[i].difficulty = "Intermediate - Hard";
+        difficultyDescription= "Intermediate - Difficult";
         break;
       case "black":
-        locations.trails[i].difficulty = "Hard";
+        difficultyDescription= "Difficult";
         break;
       case "dBlack":
-        locations.trails[i].difficulty = "Very Hard";
+        difficultyDescription= "Very Difficult";
         break;
     }
+    let userSelectDifficulty = "";
+    // console.log("difficulty in mapAPi");
+    // console.log(difficulty);
+    if(locations.trails[i].difficulty === difficulty){
+      userSelectDifficulty = "difficultyBackground";
+    }
+      
 
     // ContentString for infowindows
     let contentString =         
       '<img id="imgTrails" alt="No image" src = ' + locations.trails[i].imgSqSmall + ' >' +         
       '<h1 id="firstHeading" class="firstHeading">' + locations.trails[i].name + '</h1>' +
-      '<p class ="description" id ="difficulty">Difficuly : ' + locations.trails[i].difficulty + '</p>' +
+      '<p class ="description '+userSelectDifficulty+'" id ="difficulty">Difficulty : ' + difficultyDescription+ '</p>' +
       '<p class ="description" data-star="'+locations.trails[i].stars+'" id="trailRating">Trail Rating : ' + stars + '</p>' +
       '<p class ="description" id="trailLength">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
       '<p class ="description" id="Location">Location : ' + locations.trails[i].location + '</p>' +
@@ -182,7 +191,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
 }
 let saveArray = [];
 function saveFunction() {
-  console.log(window.document.getElementById('firstHeading').textContent);
+  // console.log(window.document.getElementById('firstHeading').textContent);
   let saveObjects = new Object();
   saveObjects["img"] = window.document.getElementById('imgTrails').getAttribute("src");
   saveObjects["name"] = window.document.getElementById('firstHeading').textContent;
@@ -201,6 +210,7 @@ function saveFunction() {
   $(".content").on("click", "#displayUserSave", function(){
     $(".displayCard").text("");
     let userSave = JSON.parse(localStorage.getItem("userSave"));
+    console.log("========== 6. Information that a user stored ==========");
     console.log(userSave);
     if (userSave !== null){
     for (let i = 0; i < userSave.length; i++){
@@ -216,7 +226,7 @@ function saveFunction() {
       let pTrailLengthElsub = $("<p>");
       let pLocationElsub = $("<p>");
       let pLinkElsub = $("<a>");
-      divEl.attr("class", "card-content card userSaveDisplay");
+      divEl.attr("class", "card-content card userSaveDisplay rcorners");
       mediaDivEl.attr("class", "media");
       mediaLeftDivEl.attr("class", "media-left");
       figureEl.attr("class","cardImage");
