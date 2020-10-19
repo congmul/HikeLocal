@@ -184,3 +184,14 @@ body {
       margin-bottom: 5px;
       font-family: cursive;
   }
+
+  .rcorners {
+    border-radius: 15px 50px;    
+  }
+
+  .rcorners2 {
+    border-radius: 1px 1px 30px 30px;
+  }
+  .tree {
+    image-orientation: flip;
+  }
