@@ -163,7 +163,7 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, difficult
     let contentString =         
       '<img id="imgTrails" alt="No image" src = ' + locations.trails[i].imgSqSmall + ' >' +         
       '<h1 id="firstHeading" class="firstHeading">' + locations.trails[i].name + '</h1>' +
-      '<p class ="description '+userSelectDifficulty+'" id ="difficulty">Difficuly : ' + difficultyDescription+ '</p>' +
+      '<p class ="description '+userSelectDifficulty+'" id ="difficulty">Difficulty : ' + difficultyDescription+ '</p>' +
       '<p class ="description" data-star="'+locations.trails[i].stars+'" id="trailRating">Trail Rating : ' + stars + '</p>' +
       '<p class ="description" id="trailLength">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
       '<p class ="description" id="Location">Location : ' + locations.trails[i].location + '</p>' +
