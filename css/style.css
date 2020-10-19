@@ -29,7 +29,7 @@ body {
   }
  
   .container {
-      margin-top: 45px;
+      margin-top: 10px;
   }
 
   .input {
@@ -57,7 +57,7 @@ body {
       height: 200px;
   }
   #mapResult{
-    height: 500px;
+    height: 600px;
   }
   /* This style for Zoom controller of MAP */
   .gm-style .controls {
@@ -126,7 +126,6 @@ body {
       margin-right: 20px;
       margin-bottom: 20px;
       width: 150px;
-      
   }
   .description{
     font-weight: 500;
@@ -141,6 +140,58 @@ body {
       float: left;
   }
 
+  #saveBtn{
+      border: none;
+      border-radius: 2%;
+      height: 20px;
+      width: 400px;
+      display: block;
+      background-color: rgb(0, 90, 8);
+      color: white;
+  }
+  #saveBtn:hover{
+        cursor: pointer;
+      background-color: rgb(0, 122, 10);
+
+  }
+  .userSaveDisplay{
+      margin-top: 20px;
+      border: 1px solid green;
+      width: 350px;
+  }
+
+  h1.title {
+    font-family: "cabin sketch";
+    color: #7a4709;
+    font-size: 50px;
+  }
 
 
+  .subtitle {
+    /* text-decoration: underline; */
+    font-family: cursive;
+  }
+
+  .card {
+    /* visibility: hidden; */
+    background-color: #f1be4fc0;
+    margin-left: 15px;
+    width: 700px;
+    text-decoration: none;
+  }
  
+  .media-content p{
+      margin-bottom: 5px;
+      font-family: cursive;
+  }
+
+  .rcorners {
+    border-radius: 15px 50px;    
+  }
+
+  .rcorners2 {
+    border-radius: 1px 1px 30px 30px;
+  }
+  .tree {
+    image-orientation: flip;
+  }

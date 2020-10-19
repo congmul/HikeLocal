@@ -2,6 +2,7 @@
 
 // Decalre variables
 let map, infoWindow;
+let currentLocation = new Object;
 
 // Map function Start
 function currentMap() {
@@ -19,6 +20,8 @@ function currentMap() {
   if (navigator.geolocation) {   // navigator.geolocation returns a object that gives Web content access to the location of the device. 
     navigator.geolocation.getCurrentPosition(   //.getCurrentPosition(success[, error[, [options]])
       (position) => {
+        currentLocation["lat"] = position.coords.latitude;
+        currentLocation["lng"] = position.coords.longitude;
         const pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
@@ -68,12 +71,20 @@ function initZoomControl(map) {
 // Decalre variables
 let infowindowResult = [];
 let weatherObjectTest;
+let infoWindowCurrentLocation;
 // Result Map with Markers function
 function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherObject) {
   const map = new google.maps.Map(document.getElementById("mapResult"), {
     zoom: 10,
     center: { lat: latitude, lng: longitude },
   });
+
+  // Add current Location on result map
+  infoWindowCurrentLocation = new google.maps.InfoWindow();
+  infoWindowCurrentLocation.setPosition(currentLocation);
+  infoWindowCurrentLocation.setContent("You are here!");
+  infoWindowCurrentLocation.open(map);
+
   console.log("=========== Trails =============== ");
   console.log(locations);
 
@@ -97,15 +108,8 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
   });
   console.log("markers : ");
   console.log(markers);
+  
   for (let i = 0; i < markers.length; i++) {
-
-    // Call Weather API for all location
-    // I can't use it because It calls so many times, OpenWeather API block my API_KEY
-    // queryWeather(locationsGoogleMap[i]["lat"], locationsGoogleMap[i]["lng"]).then(data => {
-    //   weatherObjectTest = data;
-    //   console.log("====== weatherObjectTest ======");
-    //   console.log(weatherObjectTest);
-    // });
    
     // Create Star icon
     let stars = "";
@@ -150,27 +154,18 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
     let contentString =         
       '<img id="imgTrails" alt="No image" src = ' + locations.trails[i].imgSqSmall + ' >' +         
       '<h1 id="firstHeading" class="firstHeading">' + locations.trails[i].name + '</h1>' +
-      '<p class ="description">Difficuly : ' + locations.trails[i].difficulty + '</p>' +
-      '<p class ="description">Trail Rating : ' + stars + '</p>' +
-      '<p class ="description">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
-      '<p class ="description">Location : ' + locations.trails[i].location + '</p>' +
-      '<a href=' + locations.trails[i].url + 'class="info-link" target="_Blank">More Information</a>';  // idea by Scott
-      
-      // Weather API key calls exceeded
-      //'<p class ="description Weather">Today : </p>' +
-      //'<img id="weatherIcon" alt="No image" src = "http://openweathermap.org/img/w/' + weatherObject.current.weather[0].icon + '.png" >' +
-      //'<p class ="description uvIndex">UV : ' + weatherObject.current.uvi + '</p>';     
-      // '<p class ="description uvIndex">LatLng in weather: ' + weatherObject.lat +', ' + weatherObject.lon+ '</p>'+
-      // '<p class ="description uvIndex">LatLng in trails: ' + locations.trails[i].latitude +', ' + locations.trails[i].longitude + '</p>';
+      '<p class ="description" id ="difficulty">Difficuly : ' + locations.trails[i].difficulty + '</p>' +
+      '<p class ="description" data-star="'+locations.trails[i].stars+'" id="trailRating">Trail Rating : ' + stars + '</p>' +
+      '<p class ="description" id="trailLength">Trail Length: ' + locations.trails[i].length + ' miles</p>' +
+      '<p class ="description" id="Location">Location : ' + locations.trails[i].location + '</p>' +
+      '<a href=' + locations.trails[i].url + 'class="info-link" id="infoLink" target="_Blank">More Information</a>' +  // idea by Scott
+      '<button id = "saveBtn" onclick ="saveFunction()">Save Trail</button>'; 
     infowindowResult[i] = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 800,
       minWidth: 450,
     }); 
-
-  // });
   }
-  // setTimeout(() => {
   // Use addListener function for all markers
   for (let i = 0; i < markers.length; i++) {
     markers[i].addListener("click", () => {
@@ -183,6 +178,86 @@ function resultMap(latitude, longitude, locationsGoogleMap, locations, weatherOb
     imagePath:
       "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
   });
-// }, 3000);
 
 }
+let saveArray = [];
+function saveFunction() {
+  console.log(window.document.getElementById('firstHeading').textContent);
+  let saveObjects = new Object();
+  saveObjects["img"] = window.document.getElementById('imgTrails').getAttribute("src");
+  saveObjects["name"] = window.document.getElementById('firstHeading').textContent;
+  saveObjects["difficulty"] = window.document.getElementById('difficulty').textContent;
+  saveObjects["trailRating"] = window.document.getElementById('trailRating').getAttribute("data-star");
+  saveObjects["traillength"] = window.document.getElementById('trailLength').textContent;
+  saveObjects["Location"] = window.document.getElementById('Location').textContent;
+  saveObjects["linkHref"] = window.document.getElementById('infoLink').getAttribute("href");
+  saveArray.push(saveObjects);
+  localStorage.setItem("userSave", JSON.stringify(saveArray));
+}
+
+
+
+// get data from localStorage & Create Card
+  $(".content").on("click", "#displayUserSave", function(){
+    $(".displayCard").text("");
+    let userSave = JSON.parse(localStorage.getItem("userSave"));
+    console.log(userSave);
+    if (userSave !== null){
+    for (let i = 0; i < userSave.length; i++){
+      let divEl = $("<div>");
+      let mediaDivEl = $("<div>");
+      let mediaLeftDivEl = $("<div>");
+      let figureEl = $("<figure>");
+      let imgEl = $("<img>");
+      let mediaCotentEl = $("<div>");
+      let pTitleEl = $("<p>");
+      let pDifficultyElsub = $("<p>");
+      let pTrailRatingElsub = $("<p>");
+      let pTrailLengthElsub = $("<p>");
+      let pLocationElsub = $("<p>");
+      let pLinkElsub = $("<a>");
+      divEl.attr("class", "card-content card userSaveDisplay");
+      mediaDivEl.attr("class", "media");
+      mediaLeftDivEl.attr("class", "media-left");
+      figureEl.attr("class","cardImage");
+      imgEl.attr("alt", "No image");
+      imgEl.attr("width", "190");
+      mediaCotentEl.attr("class","media-content");
+      pTitleEl.css("font-family","henny penny");
+      pTitleEl.attr("class","title is-4");
+      pDifficultyElsub.attr("class", "is-6");
+      pTrailRatingElsub.attr("class", "is-6");
+      pTrailLengthElsub.attr("class", "is-6");
+      pLocationElsub.attr("class", "is-6");
+
+      imgEl.attr("src",userSave[i].img);
+      pLinkElsub.attr("href", userSave[i].linkHref);
+      pLinkElsub.attr("target", "_Blank");
+      pLinkElsub.text("More Information");
+      pTitleEl.text(userSave[i].name);      
+      pDifficultyElsub.text(userSave[i].difficulty);
+      pTrailRatingElsub.text(userSave[i].trailRating + " / 5.0");
+      pTrailLengthElsub.text(userSave[i].traillength);
+      pLocationElsub.text(userSave[i].Location);
+
+      //Left column
+      figureEl.append(imgEl);
+      mediaLeftDivEl.append(figureEl);
+      mediaDivEl.append(mediaLeftDivEl);
+      //Right column
+      mediaCotentEl.append(pTitleEl);
+      mediaCotentEl.append(pDifficultyElsub);
+      mediaCotentEl.append(pTrailRatingElsub);
+      mediaCotentEl.append(pTrailLengthElsub);
+      mediaCotentEl.append(pLocationElsub);
+      mediaCotentEl.append(pLinkElsub);
+
+      mediaDivEl.append(mediaCotentEl);
+
+      divEl.append(mediaDivEl);
+      $(".displayCard").append(divEl);
+    }
+    }else {
+        console.log("Nulltest");
+      }
+    });
