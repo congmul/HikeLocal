@@ -28,7 +28,7 @@ WHEN I view the difficulty
 THEN presented with a color that indicates difficult the conditions are Easiest(White Circle), Easy(Green Circle), More Difficult(Blue Square), Very Difficult(Black Diamond), Extremely Difficult(Dbl. Black Diamond)
 ```
 
-<img src = "./assets/img/Hike_Local.gif" width="600" />
+<img src = "./public/assets/img/Hike_Local.gif" width="600" />
 
 ## Tech/framework used: 
 
