@@ -16,6 +16,9 @@ app.get('/signin', (req, res) => {
     res.sendFile(path.join(__dirname, './public/signin.html'));
 });
 
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/signup.html'));
+});
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
