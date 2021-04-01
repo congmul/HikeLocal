@@ -35,6 +35,7 @@ THEN presented with a color that indicates difficult the conditions are Easiest(
 Bulma (CSS Framework)</br>
 Google Maps API</br>
 Hiking Project Data API</br>
+AWS Cognito for Authentication
 
 ## Contributing:
 Name: Ben Robinson</br>
