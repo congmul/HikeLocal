@@ -4,7 +4,8 @@
   "description": "This application will give users a list of hiking trails in their area based on a set of criteria.  Users will be asked their location, desired trail rating, desired difficulty, and desired length.  Based on these inputs, our app will generate a list of trails according to their search.  They will also be able to see the weather for that morning, afternoon and evening.  Our app will also show a picture that will give a preview of what the area looks like.  This will be a useful tool for the weekend warriors looking for some new trails to try.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,14 @@
   },
   "homepage": "https://github.com/congmul/HikeLocal-ver2#readme",
   "dependencies": {
+    "amazon-cognito-identity-js": "^4.6.0",
+    "aws-sdk": "^2.878.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.6.0"
   }
+
+
 }
