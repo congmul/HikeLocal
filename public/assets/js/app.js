@@ -35,8 +35,9 @@ $(document).ready(function () {
 
         // Geolocation API transfer address to lat/lng
         // Move to Backend
-        console.log(process.env.GOOGLE_API);
-        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + `&key=${process.env.GOOGLE_API}`;
+        console.log("Test")
+        // console.log(process.env.GOOGLE_API);
+        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + `&key=${api_key}`;
         $.ajax({
             url: queryURL,
             method: "GET"
