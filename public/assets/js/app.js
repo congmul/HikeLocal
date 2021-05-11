@@ -1,5 +1,8 @@
+// require('dotenv').config()
+
 $(document).ready(function () {
 
+    
     // Declare Global variables
     var address = "";
     var trailRating = 0;
@@ -31,7 +34,10 @@ $(document).ready(function () {
         $("#loading-page").css("display", "block");
 
         // Geolocation API transfer address to lat/lng
-        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyCPgJjyXg3QM3W6eJlHAtQGhct26ZY8pEI";
+        // Move to Backend
+        console.log("Test")
+        // console.log(process.env.GOOGLE_API);
+        var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + `&key=${api_key}`;
         $.ajax({
             url: queryURL,
             method: "GET"

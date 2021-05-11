@@ -15,11 +15,9 @@ function currentMap() {
 
   // InfoWindow class - InfoWindow([opts])
   infoWindow = new google.maps.InfoWindow();
-
   // Try HTML5 geolocation.
   if (navigator.geolocation) {   // navigator.geolocation returns a object that gives Web content access to the location of the device. 
-    navigator.geolocation.getCurrentPosition(   //.getCurrentPosition(success[, error[, [options]])
-      (position) => {
+    navigator.geolocation.getCurrentPosition((position => {
         currentLocation["lat"] = position.coords.latitude;
         currentLocation["lng"] = position.coords.longitude;
         const pos = {
@@ -31,7 +29,7 @@ function currentMap() {
         infoWindow.setContent("You are here!");
         infoWindow.open(map); // Opens this InfoWindow on the given map
         map.setCenter(pos);   // Set latlng on the map
-      },
+      }),
       () => {
         handleLocationError(true, infoWindow, map.getCenter());
       }
